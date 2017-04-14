@@ -8,7 +8,7 @@ RUN set -x \
  && mkdir /app \
  && mkdir -p /app \
  && cd /app/bundle/programs/server \
- && git clone git@github.com:etamity/Rocket.Chat.git#alienbus .
+RUN git clone git@github.com:etamity/Rocket.Chat.git#alienbus .
  && npm install \
  && npm cache clear \
  && chown -R alienbus:alienbus /app
