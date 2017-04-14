@@ -11,7 +11,7 @@ Package.onUse(function(api) {
 	api.use('ecmascript');
 	api.use('rocketchat:lib');
 	api.use('rocketchat:api');
-	api.use('rocketchat:theme');
+	api.use('etamity:alien-theme');
 	api.use('rocketchat:oauth2-server');
 	api.use('less');
 

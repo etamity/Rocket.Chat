@@ -9,7 +9,7 @@ Package.onUse(function(api) {
 	api.use('ecmascript');
 	api.use('templating');
 	api.use('rocketchat:lib');
-	api.use('rocketchat:theme');
+	api.use('etamity:alien-theme');
 	api.use('rocketchat:ui');
 	api.use('less');
 

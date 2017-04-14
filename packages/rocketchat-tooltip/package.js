@@ -10,7 +10,7 @@ Package.onUse(function(api) {
 	api.use('ecmascript');
 	api.use('templating', 'client');
 	api.use('rocketchat:lib');
-	api.use('rocketchat:theme');
+	api.use('etamity:alien-theme');
 	api.use('rocketchat:ui-master');
 	api.use('less');
 

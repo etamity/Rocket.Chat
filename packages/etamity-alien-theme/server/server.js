@@ -4,7 +4,7 @@ import less from 'less';
 import Autoprefixer from 'less-plugin-autoprefix';
 import crypto from 'crypto';
 
-const logger = new Logger('etamity:alien-theme', {
+const logger = new Logger('etamity:alein-theme', {
 	methods: {
 		stop_rendering: {
 			type: 'info'
