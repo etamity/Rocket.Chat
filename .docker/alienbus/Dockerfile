@@ -8,12 +8,12 @@ RUN set -x \
  && mkdir /app \
  && mkdir -p /app \
  && cd /app/bundle/programs/server \
- && git clone git@github.com:etamity/Rocket.Chat.git#alienbus
+ && git clone git@github.com:etamity/Rocket.Chat.git#alienbus .
  && npm install \
  && npm cache clear \
- && chown -R rocketchat:rocketchat /app
+ && chown -R alienbus:alienbus /app
 
-USER rocketchat
+USER alienbus
 
 VOLUME /app/uploads
 
@@ -22,7 +22,7 @@ WORKDIR /app/bundle
 # needs a mongoinstance - defaults to container linking with alias 'mongo'
 ENV DEPLOY_METHOD=docker \
     NODE_ENV=production \
-    MONGO_URL=mongodb://mongo:27017/rocketchat \
+    MONGO_URL=mongodb://mongo:27017/alienbus \
     MONGO_OPLOG_URL=mongodb://mongo:27017/local \
     HOME=/tmp \
     PORT=3000 \
