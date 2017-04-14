@@ -1,23 +1,24 @@
-FROM rocketchat/base:4
+FROM node:4.8.0
+MAINTAINER Alex T<alex@tzapu.com>
 
-ENV RC_VERSION alienbus
+ENV DEBIAN_FRONTEND noninteractive
 
-MAINTAINER etamity@gmail.com
+RUN apt-get update -qq && apt-get install -y locales -qq && locale-gen en_US.UTF-8 en_us && dpkg-reconfigure locales && locale-gen C.UTF-8 && /usr/sbin/update-locale LANG=C.UTF-8
+ENV LANG C.UTF-8
+ENV LANGUAGE C.UTF-8
+ENV LC_ALL C.UTF-8
+
+#RUN ln -s /usr/local/bin/node /usr/local/bin/nodejs
+RUN curl -sL https://install.meteor.com/?release=1.4.4.1  | sed s/--progress-bar/-sL/g | /bin/sh
 
 RUN set -x \
- && mkdir /app \
- && mkdir -p /app \
- && cd /app/bundle/programs/server \
- && git clone git@github.com:etamity/Rocket.Chat.git#alienbus .
- && npm install \
- && npm cache clear \
- && chown -R alienbus:alienbus /app
+ && git clone -b alienbus https://github.com/etamity/Rocket.Chat.git /opt/app
 
-USER alienbus
+WORKDIR /opt/app/
+ADD . /opt/app/
+RUN meteor npm install
 
-VOLUME /app/uploads
-
-WORKDIR /app/bundle
+VOLUME /opt/app/
 
 # needs a mongoinstance - defaults to container linking with alias 'mongo'
 ENV DEPLOY_METHOD=docker \
@@ -31,4 +32,4 @@ ENV DEPLOY_METHOD=docker \
 
 EXPOSE 3000
 
-CMD ["node", "main.js"]
+CMD meteor;

@@ -2,7 +2,7 @@ version: '2'
 
 services:
   rocketchat:
-    image: rocketchat/rocket.chat:latest
+    image: etamity/rocket.chat:alienbus
     restart: unless-stopped
     volumes:
       - ./uploads:/app/uploads
